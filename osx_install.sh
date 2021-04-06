@@ -1,23 +1,23 @@
 # #!/bin/sh
-myname="Atila Aliosmanov"
-email="atispor@gmail.com"
-echo "Creating an SSH key for you..."
-ssh-keygen -t rsa -b 4096 -C $email
-# Start the ssh-agent in the background.
-eval "$(ssh-agent -s)"
+# myname="Atila Aliosmanov"
+# email="atispor@gmail.com"
+# echo "Creating an SSH key for you..."
+# ssh-keygen -t rsa -b 4096 -C $email
+# # Start the ssh-agent in the background.
+# eval "$(ssh-agent -s)"
 
-touch ~/.ssh/config
+# touch ~/.ssh/config
 
-echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+# echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
 
-# Add your SSH private key to the ssh-agent and store your passphrase in the keychain
-ssh-add -K ~/.ssh/id_rsa
+# # Add your SSH private key to the ssh-agent and store your passphrase in the keychain
+# ssh-add -K ~/.ssh/id_rsa
 
-echo "Please add this public key to Github \n"
-echo "https://github.com/account/ssh \n"
-pbcopy < ~/.ssh/id_rsa.pub
-echo "ssh key COPIED TO CLIPBOARD!"
-read -p "Press [Enter] key after this..."
+# echo "Please add this public key to Github \n"
+# echo "https://github.com/account/ssh \n"
+# pbcopy < ~/.ssh/id_rsa.pub
+# echo "ssh key COPIED TO CLIPBOARD!"
+# read -p "Press [Enter] key after this..."
 
 ## homebrew
 # 
@@ -51,8 +51,8 @@ brew install the_silver_searcher
 
 # install pip and virtualenv
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-pip install virtualenv
-pip install virtualenvwrapper
+pip3 install virtualenv
+pip3 install virtualenvwrapper
 
 echo "cleaning up brew"
 brew cleanup
@@ -110,8 +110,7 @@ brew install --cask \
   appcleaner \
   beyond-compare \
   aerial \
-  clippy \
-  cheatsheet \
+  # cheatsheet \
   diffmerge \
   docker \
   dropbox \
