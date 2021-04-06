@@ -1,6 +1,6 @@
-#!/bin/sh
-myname="Your name"
-email="your.name@email.com"
+# #!/bin/sh
+myname="Atila Aliosmanov"
+email="atispor@gmail.com"
 echo "Creating an SSH key for you..."
 ssh-keygen -t rsa -b 4096 -C $email
 # Start the ssh-agent in the background.
@@ -19,131 +19,72 @@ pbcopy < ~/.ssh/id_rsa.pub
 echo "ssh key COPIED TO CLIPBOARD!"
 read -p "Press [Enter] key after this..."
 
-##
-## ZSH config
-##
-# Download MesloLGS NF fonts
-echo "Downloading MesloLGS NF fonts..."
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-wget -P ~/Library/Fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
-
-#Install Zsh & Oh My Zsh
-echo "Installing Oh My ZSH..."
-curl -L http://install.ohmyz.sh | sh
-
-# Install powerline10k theme
-echo "Installing Powerline10k theme..."
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
-# configure your powerline10k 
-p10k configure
-
-echo "p10k is configured, 'p10k configure' to reconfigure"
-read -p "Press [Enter] in you want to continue..."
-
-echo "Setting up Zsh plugins..."
-cd ~/.oh-my-zsh/custom/plugins
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-
-### REQUIRES PASSWORD INPUT
-echo "Setting ZSH as shell..."
-chsh -s /bin/zsh
-
-### REQUIRES PASSWORD INPUT
-##
-## HOMEBREW
-##
-# Check for Homebrew,
-# Install if we don't have it
+## homebrew
+# 
+# check for homebrew, install if we don't have it
 if test ! $(which brew); then
-  echo "Installing homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
+  echo "installing homebrew..."
+  /bin/bash -c "$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install.sh)"
+fi 
 
-# Update homebrew recipes
-echo "Updating homebrew..."
+# update homebrew recipes
+echo "updating homebrew..."
 brew update
 
-# Git config
-echo "Git config"
-
-git config --global user.name $myname
-git config --global user.email $email
-
-# Installing other brew packages
-echo "Installing packages..."
+# installing other brew packages
+echo "installing packages..."
+brew install ack # replacement for grep 
+brew install corretto@11
+brew install corretto
+brew install bash-completion
 brew install zsh
 brew install zsh-syntax-highlighting
+brew install git
+brew install tree
 brew install fzf
-brew install node
-brew install yarn
+# to install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+brew install vim
+brew install wget
+brew install python
+brew install the_silver_searcher
 
-echo "Cleaning up brew"
+# install pip and virtualenv
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+pip install virtualenv
+pip install virtualenvwrapper
+
+echo "cleaning up brew"
 brew cleanup
 
-echo "Installing homebrew cask"
-brew install caskroom/cask/brew-cask
+# download meslolg nf fonts
+echo "downloading meslolg nf fonts..."
+curl -o https://github.com/romkatv/powerlevel10k-media/raw/master/meslolgs%20nf%20regular.ttf  ~/library/fonts
+curl -o https://github.com/romkatv/powerlevel10k-media/raw/master/meslolgs%20nf%20bold.ttf  ~/library/fonts
+curl -o https://github.com/romkatv/powerlevel10k-media/raw/master/meslolgs%20nf%20italic.ttf  ~/library/fonts
+curl -o https://github.com/romkatv/powerlevel10k-media/raw/master/meslolgs%20nf%20bold%20italic.ttf  ~/library/fonts
 
-# Download MesloLG NF fonts
-echo "Downloading MesloLG NF fonts..."
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf  ~/Library/Fonts
-curl -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf  ~/Library/Fonts
+# install zsh & oh my zsh
+echo "installing oh my zsh..."
+curl -l http://install.ohmyz.sh | sh
 
-# Install Zsh & Oh My Zsh
-echo "Installing Oh My ZSH..."
-curl -L http://install.ohmyz.sh | sh
-
-# Install powerline10k theme
-echo "Installing Powerline10k theme..."
+# install powerline10k theme
+echo "installing powerline10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
 
-echo "Setting up Zsh plugins..."
+echo "setting up zsh plugins..."
 cd ~/.oh-my-zsh/custom/plugins
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 
-echo "Setting ZSH as shell..."
+### requires password input
+echo "setting zsh as default shell..."
 chsh -s /bin/zsh
 
-# Installing applications with cask
-echo "Installing casks..."
-casks=(
-  aerial
-  alfred
-  diffmerge
-  google-chrome
-  istat-menus
-  iterm2
-  lastpass
-  nordvpn
-  spectacle
-  spotify
-  visual-studio-code
-  vlc
-)
-
-# Install apps to /Applications
-echo "Installing Apps in /usr/local/Caskroom..."
-
-for cask in ${casks[@]}
-do
-    version=$(brew cask info $cask | sed -n "s/$cask:\ \(.*\)/\1/p")
-    installed=$(find "/usr/local/Caskroom/$cask" -type d -maxdepth 1 -maxdepth 1 -name "$version")
-
-    if [[ -z $installed ]]; then
-        echo "${red}${cask}${reset} requires ${red}update${reset}."
-        (set -x; brew cask uninstall $cask --force;)
-        (set -x; brew cask install $cask --force;)
-    else
-        echo "${red}${cask}${reset} is ${green}up-to-date${reset}."
-    fi
-done
-
-echo "Done installing Apps!"
+# configure your powerline10k 
+p10k configure
+echo "p10k is configured, 'p10k configure' to reconfigure"
+read -p "press [enter] in you want to continue..."
 
 ##
 ## VIM CONFIG
@@ -159,23 +100,30 @@ curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/airline/t
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/lightline/colorscheme/sonokai.vim >> ~/.vim/autoload/lightline/colorscheme/sonokai.vim
 
 echo "\" important!!\nset termguicolors\n\n\" the configuration options should be placed before `colorscheme sonokai`\n\nlet g:sonokai_style = 'andromeda'\nlet g:sonokai_enable_italic = 1\nlet g:sonokai_disable_italic_comment = 1\n\ncolorscheme sonokai" >>! ~/.vimrc
-
 echo "Done with vim colors config!"
 
 # adds start script for zsh-syntax-highlighting
 echo "# start zsh-syntax-highlighting\nsource /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>! ~/.zshrc
 
-echo "Installing yarn global packages..."
-# Yarn
-yarn global add yarn-deduplicate
-
-echo "Done with yarn!"
-
-echo "Installing npm global packages..."
-# NPM
-npm install -g n
-
-echo "Done with npm!"
+echo "Installing homebrew casks"
+brew install --cask \
+  appcleaner \
+  beyond-compare \
+  aerial \
+  clippy \
+  cheatsheet \
+  diffmerge \
+  docker \
+  dropbox \
+  1password \
+  istat-menus \
+  iterm2 \
+  nordvpn \
+  spectacle \
+  sourcetree \
+  spotify \
+  visual-studio-code \
+  vlc
 
 # cleanup
 echo "Cleaning up the last stuff..."
