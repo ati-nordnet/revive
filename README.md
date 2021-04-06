@@ -58,6 +58,7 @@ or for the work setup
 
 ## Creds to
 
+- [anneback](https://github.com/anneback) for sharing great stuff!
 - [sainnhe](https://github.com/sainnhe) for vim theme `sonokai`
 - [zshusers](https://github.com/zsh-users) for `zsh-syntax-highlighting`
 - [romkatv](https://github.com/romkatv/) for zsh theme `Powerline10k` and `MesloLGS NF` fonts
