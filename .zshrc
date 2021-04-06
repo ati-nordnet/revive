@@ -91,8 +91,22 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 alias links='ll node_modules | grep '\''>'\'
-
 alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
+
+# switch java versions
+ alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+ alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+ alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
+
+[[ -f ~/.aliases ]] && source ~/.aliases
+export PATH="/usr/local/opt/erlang@21/bin:$PATH"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/google-cloud-    sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-    cloud-sdk/completion.zsh.inc'; fi
+alias k=kubectl
+#complete -F __start_kubectl k
+export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 
 # dnsflush
 alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
@@ -166,8 +180,6 @@ function killport() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 
 ## zsh-syntax-highlighting must be last
 source /Users/jesann/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -111,7 +111,6 @@ brew install --cask \
   beyond-compare \
   aerial \
   # cheatsheet \
-  diffmerge \
   docker \
   dropbox \
   1password \
