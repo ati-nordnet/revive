@@ -9,13 +9,6 @@ Shell script of installing my necessary stuff.
 ```
 > ./osx_install.sh
 ```
-
-or for the work setup
-
-```
-> ./osx_install_work.sh
-```
-
 # Stuff to do after running script
 
 ## iTerm

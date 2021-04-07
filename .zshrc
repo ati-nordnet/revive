@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 #Path to your oh-my-zsh installation.
-export ZSH=/Users/jesann/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -98,8 +98,9 @@ alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
  alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
  alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
 
-alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && kubectl get pods -n production | grep pgbouncer &&
-kubectl port-forward pgbouncer-read-only-788d667bdf-nqkgr -n production 6432:6432'
+alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && 
+export READ_ONLY_POD_NAME=$(kubectl get pods --namespace production -l "app=pgbouncer-read-only" -o jsonpath="{.items[0].metadata.name}") &&
+kubectl port-forward $READ_ONLY_POD_NAME --namespace production 6432:6432'
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
@@ -185,7 +186,7 @@ function killport() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## zsh-syntax-highlighting must be last
-source /Users/jesann/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 source ~/powerlevel10k/powerlevel10k.zsh-theme
