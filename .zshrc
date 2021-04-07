@@ -156,17 +156,6 @@ function jversion() {
   echo "To select version: jversion <detected version> e.g. 'jversion 1.8' or 'jversion 11'"
 }
 
-# Storybook render only subfolder
-story(){
-STORYBOOK_DIRECTORY="$1" yarn dev;
-}
-
-# Yalc build and publish
-yalci(){
-  cd ../../;
-  yarn build && cd - && yalc publish;
-}
-
 # get pid
 function pidport() {
     get_pid=$(lsof -t -i :$1)
@@ -183,14 +172,30 @@ function killport() {
     fi
 }
 
+function linkfile() {
+  local name=$1
+
+  local from="$HOME/$name"
+  local to="$PWD/$name"
+
+  if [ ! -e $from -o $force_flag -ne 0 ]; then
+    ln -fns $to $from
+
+    echo "Link \"$from\""
+  else
+    echo "Skip \"$from\": File exists"
+  fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+## enable zsh auto suggestions
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ## zsh-syntax-highlighting must be last
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ./zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
