@@ -109,7 +109,8 @@ if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/googl
 # The next line enables shell command completion for gcloud.
 if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-    cloud-sdk/completion.zsh.inc'; fi
 alias k=kubectl
-#complete -F __start_kubectl k
+complete -F __start_kubectl k
+# terraform
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 
 # dnsflush
