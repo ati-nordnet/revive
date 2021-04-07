@@ -99,7 +99,8 @@ curl https://raw.githubusercontent.com/sainnhe/sonokai/master/colors/sonokai.vim
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/airline/themes/sonokai.vim >> ~/.vim/autoload/airline/themes/sonokai.vim
 curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/lightline/colorscheme/sonokai.vim >> ~/.vim/autoload/lightline/colorscheme/sonokai.vim
 
-echo "\" important!!\nset termguicolors\n\n\" the configuration options should be placed before `colorscheme sonokai`\n\nlet g:sonokai_style = 'andromeda'\nlet g:sonokai_enable_italic = 1\nlet g:sonokai_disable_italic_comment = 1\n\ncolorscheme sonokai" >>! ~/.vimrc
+echo "\" important!!\nset termguicolors\n\n\" the configuration options should be placed before 
+'colorscheme sonokai'\n\nlet g:sonokai_style = 'andromeda'\nlet g:sonokai_enable_italic = 1\nlet g:sonokai_disable_italic_comment = 1\n\ncolorscheme sonokai" >>! ~/.vimrc
 echo "Done with vim colors config!"
 
 # adds start script for zsh-syntax-highlighting

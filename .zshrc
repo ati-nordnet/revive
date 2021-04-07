@@ -98,6 +98,9 @@ alias dedupe='yarn --force && yarn-deduplicate yarn.lock && yarn'
  alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
  alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
 
+alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && kubectl get pods -n production | grep pgbouncer &&
+kubectl port-forward pgbouncer-read-only-788d667bdf-nqkgr -n production 6432:6432'
+
 [[ -f ~/.aliases ]] && source ~/.aliases
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 # The next line updates PATH for the Google Cloud SDK.
