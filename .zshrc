@@ -186,10 +186,11 @@ function killport() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ## zsh-syntax-highlighting must be last
-source ~/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ./zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
