@@ -1,23 +1,4 @@
 # #!/bin/sh
-# myname="Atila Aliosmanov"
-# email="atispor@gmail.com"
-# echo "Creating an SSH key for you..."
-# ssh-keygen -t rsa -b 4096 -C $email
-# # Start the ssh-agent in the background.
-# eval "$(ssh-agent -s)"
-
-# touch ~/.ssh/config
-
-# echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
-
-# # Add your SSH private key to the ssh-agent and store your passphrase in the keychain
-# ssh-add -K ~/.ssh/id_rsa
-
-# echo "Please add this public key to Github \n"
-# echo "https://github.com/account/ssh \n"
-# pbcopy < ~/.ssh/id_rsa.pub
-# echo "ssh key COPIED TO CLIPBOARD!"
-# read -p "Press [Enter] key after this..."
 
 ## homebrew
 # 
@@ -48,6 +29,8 @@ brew install vim
 brew install wget
 brew install python
 brew install the_silver_searcher
+brew install kubectl
+brew install kubectx
 
 # install pip and virtualenv
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -126,6 +109,23 @@ brew install --cask \
   spotify \
   visual-studio-code \
   vlc
+
+function linkfile() {
+  local name=$1
+
+  local from="$HOME/$name"
+  local to="$PWD/$name"
+
+  if [ ! -e $from -o $force_flag -ne 0 ]; then
+    ln -fns $to $from
+
+    echo "Link \"$from\""
+  else
+    echo "Skip \"$from\": File exists"
+  fi
+}
+# link current .zshrc file to the one under $HOME
+linkfile ".zshrc"
 
 # cleanup
 echo "Cleaning up the last stuff..."
