@@ -8,8 +8,9 @@ fi
 #Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 # Setting for UTF-8 terminal support 
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LC_ALL="en_US.UTF-8"
+export LANG=$LC_ALL
+export LANGUAGE=$LC_ALL
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -59,7 +60,7 @@ export LC_ALL=en_US.UTF-8
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -108,9 +109,12 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 # switch java versions
- alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
- alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
- alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
+alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
+alias j16="export JAVA_HOME=`/usr/libexec/java_home -v 16`; java -version"
+
+alias k=kubectl
 
 alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && 
 export READ_ONLY_POD_NAME=$(kubectl get pods --namespace production -l "app=pgbouncer-read-only" -o jsonpath="{.items[0].metadata.name}") &&
@@ -122,8 +126,10 @@ export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/google-cloud-    sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-    cloud-sdk/completion.zsh.inc'; fi
-alias k=kubectl
-complete -F __start_kubectl k
+
+
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 # terraform
 export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
 
@@ -182,8 +188,8 @@ function killport() {
     read "REPLY?Kill process on port $1? [y/N]: "
     if [[ $REPLY =~ ^[Yy]$ ]]
     then 
-       kill -9 $(lsof -t -i :$1)
-       echo "-=! KILLED PROCCESS ON PORT [[$1]] !=-"
+      kill -9 $(lsof -t -i :$1)
+      echo "-=! KILLED PROCCESS ON PORT [[$1]] !=-"
     fi
 }
 
