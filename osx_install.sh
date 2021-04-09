@@ -35,6 +35,12 @@ brew install kubectl
 brew install kubectx
 brew install kustomize
 brew install tfenv
+
+# Tap and install Jens nordnet repos
+brew tap jenbri/nordnet-jenbri ssh://git@scm.prod.nordnet.se:2222/~jenbri/homebrew-nordnet-jenbri.git
+brew install nordnet_maven_versions_upgrade # use e.g. nordnet-maven-versions-upgrade.sh
+brew install jensim/bitbucket_server_cli-linux/bitbucket_server_cli # usa e.g. bitbucket_server_cli clone -s https://scm.prod.nordnet.se
+
 # install corretto 15
 # curl -LO https://corretto.aws/downloads/latest/amazon-corretto-15-x64-linux-jdk.tar.gz
 
