@@ -100,6 +100,24 @@ brew install --cask \
   visual-studio-code \
   vlc
 
+# install gcloud
+curl https://sdk.cloud.google.com > install.sh
+bash ./install.sh --disable-prompts
+
+# Login to gcloud; you will be prompted by a tab; sign in under your <...>@nordnet.se  e-mail.
+gcloud auth login
+
+# Add application default credentials
+gcloud auth application-default login
+
+# Install docker-credential-gcr (used to give docker permissions to push images to our google container registry)
+gcloud auth configure-docker
+gcloud components install docker-credential-gcr
+
+# if not found use; ln -s /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/docker-credential-gcr /usr/local/bin/docker-credential-gcr
+docker-credential-gcr gcr-login
+docker-credential-gcr configure-docker
+
 echo "Copy and link the existing .zshrc file with the one under $HOME folder "
 cp -f ./.zshrc ~/.zshrc
 ln -fns ~/.zshrc ./.zshrc
