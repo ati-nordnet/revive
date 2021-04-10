@@ -120,9 +120,6 @@ alias svdb-connect='gcloud container clusters get-credentials production --zone 
 export READ_ONLY_POD_NAME=$(kubectl get pods --namespace production -l "app=pgbouncer-read-only" -o jsonpath="{.items[0].metadata.name}") &&
 kubectl port-forward $READ_ONLY_POD_NAME --namespace production 6432:6432'
 
-# add .aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
-
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 
@@ -204,7 +201,20 @@ function linkfile() {
   fi
 }
 
+# include fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# include .aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+source ~/google-cloud-sdk/path.zsh.inc
+# The next line enables shell command completion for gcloud.
+source ~/google-cloud-sdk/completion.zsh.inc
+# setup autocomplete in the current zsh shell
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 ## enable zsh auto suggestions
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -213,14 +223,3 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
-# setup autocomplete in the current zsh shell
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
