@@ -118,9 +118,8 @@ gcloud components install docker-credential-gcr
 docker-credential-gcr gcr-login
 docker-credential-gcr configure-docker
 
-echo "Copy and link the existing .zshrc file with the one under $HOME folder "
-cp -f ./.zshrc ~/.zshrc
-ln -fns ~/.zshrc ./.zshrc
+echo "Create a symlink from .zshrc-template under $HOME folder "
+ln -fns ~/.zshrc-template $PWD/.zshrc
 
 # cleanup
 echo "Cleaning up the last stuff..."
