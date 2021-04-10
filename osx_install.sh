@@ -73,6 +73,7 @@ cd ~/.oh-my-zsh/custom/plugins
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+cd -
 
 ### requires password input
 echo "setting zsh as default shell..."
@@ -104,22 +105,22 @@ brew install --cask \
 curl https://sdk.cloud.google.com > install.sh
 bash ./install.sh --disable-prompts
 
+echo "Create a symlink for .zshrc using .zshrc-template under $HOME"
+ln -fns $PWD/.zshrc-template ~/.zshrc
+
 # Login to gcloud; you will be prompted by a tab; sign in under your <...>@nordnet.se  e-mail.
-gcloud auth login
+# gcloud auth login
 
 # Add application default credentials
-gcloud auth application-default login
+# gcloud auth application-default login
 
 # Install docker-credential-gcr (used to give docker permissions to push images to our google container registry)
-gcloud auth configure-docker
-gcloud components install docker-credential-gcr
+# gcloud auth configure-docker
+# gcloud components install docker-credential-gcr
 
 # if not found use; ln -s /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/docker-credential-gcr /usr/local/bin/docker-credential-gcr
-docker-credential-gcr gcr-login
-docker-credential-gcr configure-docker
-
-echo "Create a symlink from .zshrc-template under $HOME folder "
-ln -fns ~/.zshrc-template $PWD/.zshrc
+# docker-credential-gcr gcr-login
+# docker-credential-gcr configure-docker
 
 # cleanup
 echo "Cleaning up the last stuff..."
@@ -127,3 +128,7 @@ brew cleanup
 rm -f -r /Library/Caches/Homebrew/*
 
 echo "Finished installation!"
+
+echo "Reload -> $SHELL"
+exec -l $SHELL
+
