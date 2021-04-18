@@ -109,8 +109,8 @@ brew install --cask \
 curl https://sdk.cloud.google.com > install.sh
 bash ./install.sh --disable-prompts
 
-echo "Create a symlink for .zshrc using .zshrc-template under $HOME"
-ln -fns $PWD/.zshrc-template ~/.zshrc
+echo "Create a symlink using .zshrc"
+ln -fns $PWD/.zshrc ~/.zshrc
 
 # Login to gcloud; you will be prompted by a tab; sign in under your <...>@nordnet.se  e-mail.
 # gcloud auth login

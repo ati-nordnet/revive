@@ -140,7 +140,7 @@ function brewv() {
   echo "$casks"
 }
 
-# removes branches locally which is merge or removed
+# removes branches locally which is merged or removed
 function prunegit() {
   git fetch --all --prune && git checkout master && git branch --merged | grep -v master | xargs git branch -d
 }
