@@ -107,13 +107,6 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
-# switch java versions
-alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
-alias j15="export JAVA_HOME=`/usr/libexec/java_home -v 15`; java -version"
-alias j16="export JAVA_HOME=`/usr/libexec/java_home -v 16`; java -version"
-
 alias k=kubectl
 
 alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && 
