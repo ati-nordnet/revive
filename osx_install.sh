@@ -22,6 +22,8 @@ brew install corretto8
 brew install corretto11
 brew install maven
 brew install bash-completion
+brew install htop
+brew install jq
 brew install zsh
 brew install git
 brew install tree
