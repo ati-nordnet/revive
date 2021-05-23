@@ -93,6 +93,7 @@ export LANG=en_US.UTF-8
 
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias bbc='bitbucket_server_cli clone -s https://scm.prod.nordnet.se'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
