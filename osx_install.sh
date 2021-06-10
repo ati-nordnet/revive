@@ -40,6 +40,7 @@ brew install kustomize
 brew install tfenv
 brew install helm
 brew install yarn
+brew install nmap
 
 # Tap and install Jens nordnet repos
 brew tap jenbri/nordnet-jenbri ssh://git@scm.prod.nordnet.se:2222/~jenbri/homebrew-nordnet-jenbri.git
