@@ -7,6 +7,8 @@ ssh-keygen -t rsa -b 4096 -C $email
 eval "$(ssh-agent -s)"
 
 touch ~/.ssh/config
+# prefer a rebase workflow
+git config --global pull.rebase merges
 
 echo "Host *\n  AddKeysToAgent yes\n  UseKeychain yes\n  IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
 
