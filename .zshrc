@@ -109,7 +109,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 alias k=kubectl
+alias tf=terraform
 
+# For Classic SV
 alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && 
 export READ_ONLY_POD_NAME=$(kubectl get pods --namespace production -l "app=pgbouncer-read-only" -o jsonpath="{.items[0].metadata.name}") &&
 kubectl port-forward $READ_ONLY_POD_NAME --namespace production 6432:6432'
@@ -117,6 +119,19 @@ kubectl port-forward $READ_ONLY_POD_NAME --namespace production 6432:6432'
 alias rabbitmq-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino &&
 export RABBITMQ_POD_NAME=$(kubectl get pods --namespace production -l "app=rabbitmq-ha" -o jsonpath="{.items[0].metadata.name}") &&
 kubectl port-forward $RABBITMQ_POD_NAME --namespace production 5672:5672 15672:15672'
+
+# For NNX
+alias dev-commentsdb-connect='gcloud container clusters get-credentials main --region europe-north1 --project atiali4-cluster-24561 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
+
+alias prod-commentsdb-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
+
+alias dev-profilesdb-connect='gcloud container clusters get-credentials main --region europe-north1 --project atiali4-cluster-24561 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
+
+alias prod-profilesdb-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
 
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
