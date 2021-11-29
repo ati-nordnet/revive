@@ -116,6 +116,11 @@ alias svdb-connect='gcloud container clusters get-credentials production --zone 
 export READ_ONLY_POD_NAME=$(kubectl get pods --namespace production -l "app=pgbouncer-read-only" -o jsonpath="{.items[0].metadata.name}") &&
 kubectl port-forward $READ_ONLY_POD_NAME --namespace production 6432:6432'
 
+# For Classic SV (Test)
+alias svdb-test-connect='gcloud container clusters get-credentials sv-test-cluster --zone europe-north1-a --project shareville-test && 
+export READ_ONLY_POD_NAME=$(kubectl get pods --namespace sv-test -l "app=pgbouncer" -o jsonpath="{.items[0].metadata.name}") &&
+kubectl port-forward $READ_ONLY_POD_NAME --namespace sv-test 6432:6432'
+
 alias rabbitmq-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino &&
 export RABBITMQ_POD_NAME=$(kubectl get pods --namespace production -l "app=rabbitmq-ha" -o jsonpath="{.items[0].metadata.name}") &&
 kubectl port-forward $RABBITMQ_POD_NAME --namespace production 5672:5672 15672:15672'
