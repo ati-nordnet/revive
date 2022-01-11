@@ -138,6 +138,12 @@ kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace sharevil
 alias prod-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
 
+alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-sv-cluster-33559 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
+
+alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
+
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 
