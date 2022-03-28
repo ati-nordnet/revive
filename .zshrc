@@ -66,6 +66,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+export JAVA_17=/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home
 
 source $ZSH/oh-my-zsh.sh
 
