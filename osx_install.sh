@@ -50,9 +50,6 @@ brew install jensim/bitbucket_server_cli-linux/bitbucket_server_cli # usa e.g. b
 brew install virtualenv
 brew install pyenv-virtualenvwrapper
 
-# install corretto 15
-# curl -LO https://corretto.aws/downloads/latest/amazon-corretto-15-x64-linux-jdk.tar.gz
-
 # install pip and virtualenv
 # curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 # pip3 install virtualenv
