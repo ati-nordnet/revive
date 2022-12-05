@@ -234,6 +234,26 @@ function linkfile() {
   fi
 }
 
+function clone-np() {
+  gh repo list nordnet-private --limit 1000 | while read -r repo _; do
+  gh repo clone "$repo" "$repo"
+done
+}
+
+function co-np {
+  gh repo list nordnet-private --limit 1000 | while read -r repo _; do
+  gh repo clone "$repo" "$repo" -- -q 2>/dev/null || (
+    cd "$repo"
+    # Handle case where local checkout is on a non-main/master branch
+    # - ignore checkout errors because some repos may have zero commits, 
+    # so no main or master
+    # https://stackoverflow.com/a/68770988
+    git checkout -q master 2>/dev/null || true
+    git pull -qr
+  )
+done
+}
+
 # include fuzzy find
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # include .aliases
@@ -256,3 +276,9 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/atiali/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atiali/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/atiali/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atiali/google-cloud-sdk/completion.zsh.inc'; fi
