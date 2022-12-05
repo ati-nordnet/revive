@@ -44,9 +44,9 @@ brew install nmap
 brew install skaffold
 
 # Tap and install Jens nordnet repos
-brew tap jenbri/nordnet-jenbri ssh://git@scm.prod.nordnet.se:2222/~jenbri/homebrew-nordnet-jenbri.git
-brew install nordnet_maven_versions_upgrade # use e.g. nordnet-maven-versions-upgrade.sh
-brew install jensim/bitbucket_server_cli-linux/bitbucket_server_cli # usa e.g. bitbucket_server_cli clone -s https://scm.prod.nordnet.se
+# brew tap jenbri/nordnet-jenbri ssh://git@scm.prod.nordnet.se:2222/~jenbri/homebrew-nordnet-jenbri.git
+# brew install nordnet_maven_versions_upgrade # use e.g. nordnet-maven-versions-upgrade.sh
+# brew install jensim/bitbucket_server_cli-linux/bitbucket_server_cli # usa e.g. bitbucket_server_cli clone -s https://scm.prod.nordnet.se
 brew install virtualenv
 brew install pyenv-virtualenvwrapper
 
