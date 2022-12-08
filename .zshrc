@@ -153,6 +153,13 @@ kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace sharev
 alias prod-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
 
+alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
+alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
+alias prod-sv-history-notifications-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
+
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
 
@@ -251,6 +258,12 @@ function co-np {
     git checkout -q master 2>/dev/null || true
     git pull -qr
   )
+done
+}
+
+function clone-shareville() {
+  gh repo list shareville --limit 1000 | while read -r repo _; do
+  gh repo clone "$repo" "$repo"
 done
 }
 
