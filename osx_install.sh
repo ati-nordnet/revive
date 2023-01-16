@@ -17,6 +17,7 @@ echo "installing packages..."
 brew tap homebrew/cask-versions
 brew install ack # replacement for grep 
 brew install corretto
+brew install gh
 # brew install corretto8
 # brew install corretto11
 brew install maven

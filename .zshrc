@@ -241,13 +241,8 @@ function linkfile() {
   fi
 }
 
-function clone-np() {
-  gh repo list nordnet-private --limit 1000 | while read -r repo _; do
-  gh repo clone "$repo" "$repo"
-done
-}
 
-function co-np {
+function clone-np {
   gh repo list nordnet-private --limit 1000 | while read -r repo _; do
   gh repo clone "$repo" "$repo" -- -q 2>/dev/null || (
     cd "$repo"
@@ -261,7 +256,7 @@ function co-np {
 done
 }
 
-function clone-shareville() {
+function clone-sv() {
   gh repo list shareville --limit 1000 | while read -r repo _; do
   gh repo clone "$repo" "$repo"
 done
