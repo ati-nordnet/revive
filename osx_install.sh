@@ -96,7 +96,7 @@ echo "Installing homebrew casks"
 brew install --cask \
   # appcleaner \
   # beyond-compare \
-  aerial \
+  # aerial \
   google-cloud-sdk \
   # istat-menus \
   # iterm2 \
@@ -114,18 +114,18 @@ echo "Create a symlink using .zshrc"
 ln -fns $PWD/.zshrc ~/.zshrc
 
 # Login to gcloud; you will be prompted by a tab; sign in under your <...>@nordnet.se  e-mail.
-# gcloud auth login
+gcloud auth login
 
 # Add application default credentials
-# gcloud auth application-default login
+gcloud auth application-default login
 
 # Install docker-credential-gcr (used to give docker permissions to push images to our google container registry)
-# gcloud auth configure-docker
-# gcloud components install docker-credential-gcr
+gcloud auth configure-docker
+gcloud components install docker-credential-gcr
 
 # if not found use; ln -s /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/docker-credential-gcr /usr/local/bin/docker-credential-gcr
-# docker-credential-gcr gcr-login
-# docker-credential-gcr configure-docker
+docker-credential-gcr gcr-login
+docker-credential-gcr configure-docker
 
 # cleanup
 echo "Cleaning up the last stuff..."
