@@ -95,13 +95,13 @@ curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/lightline
 echo "Installing homebrew casks"
 brew install --cask \
   # appcleaner \
-  beyond-compare \
+  # beyond-compare \
   aerial \
   google-cloud-sdk \
   # istat-menus \
   # iterm2 \
   # spectacle \
-  sourcetree \
+  # sourcetree \
   # spotify \
   # visual-studio-code \
   # vlc
