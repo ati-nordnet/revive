@@ -5,7 +5,7 @@
 # check for homebrew, install if we don't have it
 if test ! $(which brew); then
   echo "installing homebrew..."
-  /bin/bash -c "$(curl -fssl https://raw.githubusercontent.com/homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi 
 
 # update homebrew recipes
@@ -17,9 +17,8 @@ echo "installing packages..."
 brew tap homebrew/cask-versions
 brew install ack # replacement for grep 
 brew install corretto
-brew install corretto
-brew install corretto8
-brew install corretto11
+# brew install corretto8
+# brew install corretto11
 brew install maven
 brew install bash-completion
 brew install htop
@@ -95,17 +94,17 @@ curl https://raw.githubusercontent.com/sainnhe/sonokai/master/autoload/lightline
 
 echo "Installing homebrew casks"
 brew install --cask \
-  appcleaner \
+  # appcleaner \
   beyond-compare \
   aerial \
   google-cloud-sdk \
-  istat-menus \
-  iterm2 \
-  spectacle \
+  # istat-menus \
+  # iterm2 \
+  # spectacle \
   sourcetree \
-  spotify \
-  visual-studio-code \
-  vlc
+  # spotify \
+  # visual-studio-code \
+  # vlc
 
 # install gcloud
 curl https://sdk.cloud.google.com > install.sh
