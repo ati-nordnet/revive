@@ -98,6 +98,7 @@ brew install --cask \
   # appcleaner \
   # beyond-compare \
   # aerial \
+  clipy
   google-cloud-sdk \
   # istat-menus \
   # iterm2 \
