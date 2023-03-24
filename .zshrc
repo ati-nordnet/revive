@@ -65,9 +65,9 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-19.jdk/Contents/Home"
-export M2_HOME="/opt/homebrew/Cellar/maven/3.8.7/libexec"
-export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home"
+# export M2_HOME="/opt/homebrew/Cellar/maven/3.9.1"
+# export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,6 +112,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 alias k=kubectl
 alias tf=terraform
+
+# Needed for M1 Macs
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # For Classic SV
 alias svdb-connect='gcloud container clusters get-credentials production --zone europe-west3-a --project alpa-chino && 
