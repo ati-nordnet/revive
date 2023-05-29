@@ -131,25 +131,25 @@ export RABBITMQ_POD_NAME=$(kubectl get pods --namespace production -l "app=rabbi
 kubectl port-forward $RABBITMQ_POD_NAME --namespace production 5672:5672 15672:15672'
 
 # For NNX
-alias dev-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+alias dev-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
 
 alias prod-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
 
-alias dev-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+alias dev-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
 
 alias prod-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
 
-alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
 
 alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
 
-alias dev-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+alias dev-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
 alias test-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
@@ -157,12 +157,15 @@ kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace sharev
 alias prod-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
 
-alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project team-svd-cluster-10097 && 
+alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
 alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
 alias prod-sv-history-notifications-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
+alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
+
 
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
