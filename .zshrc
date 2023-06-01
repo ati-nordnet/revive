@@ -66,7 +66,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home"
-export M2_HOME="/opt/homebrew/Cellar/maven/3.9.1"
+export M2_HOME="/opt/homebrew/Cellar/maven/3.9.2"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -298,3 +298,7 @@ if [ -f '/Users/atiali/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atiali/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/atiali/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atiali/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

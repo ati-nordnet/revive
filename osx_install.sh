@@ -18,6 +18,7 @@ brew tap homebrew/cask-versions
 brew install ack # replacement for grep 
 brew install corretto
 brew install gh
+brew install remotemobprogramming/brew/mob
 # brew install corretto8
 # brew install corretto11
 brew install maven
@@ -111,6 +112,9 @@ brew install --cask \
 # install gcloud
 curl https://sdk.cloud.google.com > install.sh
 bash ./install.sh --disable-prompts
+
+# install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 echo "Create a symlink using .zshrc"
 ln -fns $PWD/.zshrc ~/.zshrc
