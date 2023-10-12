@@ -153,10 +153,19 @@ alias dev-portfolios-connect='gcloud container clusters get-credentials main --r
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
 alias test-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
+alias test-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
+alias test-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
+alias test-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
 
 alias prod-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
-
+alias prod-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
+alias prod-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
 alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
 alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
