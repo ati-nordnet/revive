@@ -65,7 +65,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/bin/java"
 export M2_HOME="/opt/homebrew/Cellar/maven/3.9.2"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 
