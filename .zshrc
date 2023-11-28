@@ -145,7 +145,8 @@ kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace sharevil
 
 alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
-
+alias test-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
 alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
 
