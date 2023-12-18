@@ -162,7 +162,7 @@ alias test-groups-connect='gcloud container clusters get-credentials main --regi
 kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
 
 alias prod-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5433:5432'
 alias prod-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
 alias prod-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
