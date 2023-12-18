@@ -175,6 +175,11 @@ alias prod-sv-history-notifications-connect='gcloud container clusters get-crede
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
 alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
+alias prod-trades-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
+alias test-trades-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
+
 
 
 # Erlang
