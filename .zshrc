@@ -66,7 +66,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/bin/java"
-export M2_HOME="/opt/homebrew/Cellar/maven/3.9.5"
+export M2_HOME="/opt/homebrew/Cellar/maven/3.9.6"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -133,25 +133,19 @@ kubectl port-forward $RABBITMQ_POD_NAME --namespace production 5672:5672 15672:1
 # For NNX
 alias dev-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
-
-alias prod-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
-
 alias dev-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
-
-alias prod-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
-
 alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
-alias test-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
-alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
-
+alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
 alias dev-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
+alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5437:5432'
+
+alias test-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
 alias test-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
 alias test-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
@@ -160,25 +154,27 @@ alias test-media-connect='gcloud container clusters get-credentials main --regio
 kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
 alias test-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
+alias test-trades-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
+alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
 
+alias prod-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
 alias prod-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5433:5432'
 alias prod-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5432:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5434:5432'
 alias prod-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
-alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
-kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
-alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
-kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
-alias prod-sv-history-notifications-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
-alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5435:5432'
 alias prod-trades-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
-alias test-trades-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5436:5432'
+alias prod-sv-history-notifications-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5438:5432'
+alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5439:5432'
+alias prod-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5440:5432'
 
 
 
