@@ -11,7 +11,10 @@ export ZSH=~/.oh-my-zsh
 export LC_ALL="en_US.UTF-8"
 export LANG=$LC_ALL
 export LANGUAGE=$LC_ALL
-
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH="$HOME/.rbenv/shims:$PATH"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -131,18 +134,20 @@ export RABBITMQ_POD_NAME=$(kubectl get pods --namespace production -l "app=rabbi
 kubectl port-forward $RABBITMQ_POD_NAME --namespace production 5672:5672 15672:15672'
 
 # For NNX
-alias dev-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
-alias dev-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
-alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
-alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-media-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-media --namespace shareville 5432:5432'
-alias dev-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-portfolios-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-portfolios --namespace shareville 5432:5432'
-alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sva-dev-cluster-40191 && 
+alias dev-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5437:5432'
+alias dev-groups-connect='gcloud container clusters get-credentials main --region europe-north1 --project sv-env-cluster-3657 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-groups --namespace shareville 5437:5432'
 
 alias test-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5432:5432'
@@ -158,6 +163,8 @@ alias test-trades-connect='gcloud container clusters get-credentials main --regi
 kubectl port-forward svc/cloudsql-proxy-shareville-trades --namespace shareville 5432:5432'
 alias test-sv-notifications-history-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
 kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace shareville 5432:5432'
+alias test-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project test-cluster-29260 && 
+kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5432:5432'
 
 alias prod-profiles-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles --namespace shareville 5432:5432'
@@ -174,9 +181,21 @@ kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace sha
 alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5439:5432'
 alias prod-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5440:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5440:5432'
+alias prod-reactions-connect='gcloud container clusters get-credentials main --region europe-n
+kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5441:5432'
 
-
+alias svx-db='kubectl port-forward svc/cloudsql-proxy-shareville-comments -n shareville 5432:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles -n shareville 5433:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments -n shareville 5434:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-groups -n shareville 5435:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-bookmarks -n shareville 5436:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-portfolios -n shareville 5437:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-reactions -n shareville 5438:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-groups -n shareville 5439:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-sentiments -n shareville 5440:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-dreams -n shareville 5441:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-trades -n shareville 5442:5432  ; fg'
 
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
@@ -313,3 +332,6 @@ if [ -f '/Users/atiali/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/at
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
