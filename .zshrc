@@ -71,6 +71,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/op
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/bin/java"
 export M2_HOME="/opt/homebrew/Cellar/maven/3.9.6"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
+export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/.config/gcloud/application_default_credentials.json"
 
 source $ZSH/oh-my-zsh.sh
 
