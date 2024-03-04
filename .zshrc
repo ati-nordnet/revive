@@ -68,7 +68,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home/bin/java"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
 export M2_HOME="/opt/homebrew/Cellar/maven/3.9.6"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/.config/gcloud/application_default_credentials.json"
@@ -210,7 +210,7 @@ alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
 # lists versions of brew packages and lists all version if no input is given
 function brewv() {
   packs=$(brew list --version -1)
-  casks=$(brew cask list --version -1)
+  casks=$(brew casks list --version -1)
 
   echo "::PACKAGES::"
   echo "$packs\n"
@@ -335,4 +335,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.rvm/bin:$PATH"
