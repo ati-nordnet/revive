@@ -185,6 +185,8 @@ alias prod-comments-connect='gcloud container clusters get-credentials main --re
 kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5440:5432'
 alias prod-reactions-connect='gcloud container clusters get-credentials main --region europe-n
 kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5441:5432'
+alias prod-bookmarks-connect='gcloud container clusters get-credentials main --region europe-n
+kubectl port-forward svc/cloudsql-proxy-shareville-bookmarks --namespace shareville 5441:5432'
 
 alias svx-db='kubectl port-forward svc/cloudsql-proxy-shareville-comments -n shareville 5432:5432 &
 kubectl port-forward svc/cloudsql-proxy-shareville-profiles -n shareville 5433:5432 &
@@ -336,3 +338,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
+
+# Colima (docker replacement) environment variables for it to work well with Java Testcontainers
+if colima status 2> /dev/null ; then
+    export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+    export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
+    export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+else
+    echo "Colima is not running -- can not set environment variables"
+fi
