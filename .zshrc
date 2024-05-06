@@ -68,7 +68,8 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/opt/homebrew/bin:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home
+
 export M2_HOME="/opt/homebrew/Cellar/maven/3.9.6"
 export PATH="$M2_HOME/bin:$JAVA_HOME/bin:$PATH"
 export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/.config/gcloud/application_default_credentials.json"
@@ -332,6 +333,7 @@ if [ -f '/Users/atiali/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atiali/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/atiali/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atiali/google-cloud-sdk/completion.zsh.inc'; fi
 
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
