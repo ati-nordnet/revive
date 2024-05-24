@@ -183,23 +183,22 @@ kubectl port-forward svc/cloudsql-proxy-sv-notifications-history --namespace sha
 alias prod-instruments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
 kubectl port-forward svc/cloudsql-proxy-shareville-instruments --namespace shareville 5439:5432'
 alias prod-comments-connect='gcloud container clusters get-credentials main --region europe-north1 --project prod-cluster-25354 && 
-kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5440:5432'
+kubectl port-forward svc/cloudsql-proxy-shareville-comments --namespace shareville 5442:5432'
 alias prod-reactions-connect='gcloud container clusters get-credentials main --region europe-n
 kubectl port-forward svc/cloudsql-proxy-shareville-reactions --namespace shareville 5441:5432'
 alias prod-bookmarks-connect='gcloud container clusters get-credentials main --region europe-n
 kubectl port-forward svc/cloudsql-proxy-shareville-bookmarks --namespace shareville 5441:5432'
 
-alias svx-db='kubectl port-forward svc/cloudsql-proxy-shareville-comments -n shareville 5432:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-profiles -n shareville 5433:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-instruments -n shareville 5434:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-groups -n shareville 5435:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-bookmarks -n shareville 5436:5432 & 
-kubectl port-forward svc/cloudsql-proxy-shareville-portfolios -n shareville 5437:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-reactions -n shareville 5438:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-groups -n shareville 5439:5432 &
-kubectl port-forward svc/cloudsql-proxy-shareville-sentiments -n shareville 5440:5432 & 
-kubectl port-forward svc/cloudsql-proxy-shareville-dreams -n shareville 5441:5432 & 
-kubectl port-forward svc/cloudsql-proxy-shareville-trades -n shareville 5442:5432  ; fg'
+alias svx-db='kubectl port-forward svc/cloudsql-proxy-shareville-comments -n shareville 5442:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-profiles -n shareville 5432:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-instruments -n shareville 5439:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-bookmarks -n shareville 5441:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-portfolios -n shareville 5433:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-reactions -n shareville 5441:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-groups -n shareville 5434:5432 &
+kubectl port-forward svc/cloudsql-proxy-shareville-sentiments -n shareville 5444:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-dreams -n shareville 5443:5432 & 
+kubectl port-forward svc/cloudsql-proxy-shareville-trades -n shareville 5436:5432  ; fg'
 
 # Erlang
 export PATH="/usr/local/opt/erlang@21/bin:$PATH"
