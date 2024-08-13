@@ -201,10 +201,10 @@ kubectl port-forward svc/cloudsql-proxy-shareville-dreams -n shareville 5443:543
 kubectl port-forward svc/cloudsql-proxy-shareville-trades -n shareville 5436:5432; fg'
 
 # Erlang
-export PATH="/usr/local/opt/erlang@21/bin:$PATH"
+export PATH="/opt/homebrew/opt/erlang@26/bin:$PATH"
 
-# terraform
-export PATH="/usr/local/opt/terraform@0.11/bin:$PATH"
+# Terraform
+export PATH="/opt/homebrew/bin/terraform:$PATH"
 
 # dnsflush
 alias dnsflush='sudo killall -HUP mDNSResponder;sleep 2;'
