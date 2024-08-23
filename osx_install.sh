@@ -43,7 +43,8 @@ brew install helm
 brew install yarn
 brew install nmap
 brew install skaffold
-
+brew install nvm
+brew install node
 # Tap and install Jens nordnet repos
 # brew tap jenbri/nordnet-jenbri ssh://git@scm.prod.nordnet.se:2222/~jenbri/homebrew-nordnet-jenbri.git
 # brew install nordnet_maven_versions_upgrade # use e.g. nordnet-maven-versions-upgrade.sh
