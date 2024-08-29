@@ -351,3 +351,5 @@ if colima status 2> /dev/null ; then
 else
     echo "Colima is not running -- can not set environment variables"
 fi
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
