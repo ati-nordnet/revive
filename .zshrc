@@ -349,7 +349,7 @@ if colima status 2> /dev/null ; then
     export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
     export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
 else
-    echo "Colima is not running -- can not set environment variables"
+    # echo "Colima is not running -- can not set environment variables"
 fi
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
