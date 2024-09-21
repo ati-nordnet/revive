@@ -16,7 +16,8 @@ brew update
 echo "installing packages..."
 brew tap homebrew/cask-versions
 brew install ack # replacement for grep 
-brew install corretto
+brew install corretto # latest java
+brew install flipper # react native debugger
 brew install gh
 brew install remotemobprogramming/brew/mob
 # brew install corretto8
@@ -101,8 +102,8 @@ brew install --cask \
   # beyond-compare \
   # aerial \
   clipy
-  google-cloud-sdk \
-  # istat-menus \
+  warp
+  # google-cloud-sdk \
   # iterm2 \
   # spectacle \
   # sourcetree \
